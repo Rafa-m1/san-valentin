@@ -3,22 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quieres ser mi San Valentín?</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/serif.min.css">
+    <title>San Valentín 💖</title>
+    <style>
+        /* Fondo con colores y flores */
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            background-image: url('https://images.unsplash.com/photo-1502307100819-a9031b47a591'); /* Imagen de flores */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            padding: 50px;
+        }
+
+        /* Diseño de las diapositivas */
+        .slide {
+            display: none;
+            font-size: 32px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            margin: auto;
+            width: 60%;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Botón bonito */
+        button {
+            padding: 12px 24px;
+            margin-top: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff5e78;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #ff2e50;
+        }
+    </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <section>¿Quieres ser mi San Valentín? 💖</section>
-            <section>Te quiero porque eres increíble 💕</section>
-            <section>¡Espero tu respuesta! 😊</section>
-        </div>
+
+    <!-- Contenido de la presentación -->
+    <div class="slide active">💘 ¿Quieres ser mi San Valentín? 💘  
+        <p>Desde que te conocí quede fascinado y desde que estaamos con profe Alexita supe que eras el amor de mi vida y te hibasa convertir en alguien muy especial. 💖  
+        Tu sonrisa ilumina mis días y tu presencia llena mi corazón de alegría.  
+        No hay nadie con quien prefiera compartir este día tan bonito. 🌹✨</p>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <div class="slide">🌹 Mi amorsote te prometo momentos hermosos llenos de amor. 🌹</div>
+    <div class="slide">💖 Eres la persona más importante y especial en mi vida. 💖</div>
+    <div class="slide">💕 Mi chiquitita bella esperare tu respuesta con emoción y cariño. 💕</div>
+
+    <button onclick="nextSlide()">Siguiente</button>
+
     <script>
-        Reveal.initialize();
-    </script>
-</body>
-</html>
+        let index = 0;
+        function nextSlide() {
+            let slides = document.querySelectorAll(".slide");
+            slides[index].classList.remove("active");
+            index = (index + 1) % slides.length;
+            slides[index].classList.add("active");
+        
