@@ -5,71 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Valentín 💖</title>
     <style>
-        /* Fondo con colores y flores */
         body {
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            background-image: url('https://images.unsplash.com/photo-1502307100819-a9031b47a591'); /* Imagen de flores */
-            background-size: cover;
-            background-position: center;
-            text-align: center;
             font-family: Arial, sans-serif;
-            color: white;
-            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            text-align: center;
         }
-
-        /* Diseño de las diapositivas */
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+        }
         .slide {
             display: none;
-            font-size: 32px;
-            font-weight: bold;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 15px;
-            margin: auto;
-            width: 60%;
+            font-size: 20px;
         }
-
-        .active {
+        .slide.active {
             display: block;
         }
-
-        /* Botón bonito */
         button {
-            padding: 12px 24px;
-            margin-top: 20px;
-            font-size: 20px;
-            cursor: pointer;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
             border: none;
-            border-radius: 10px;
-            background-color: #ff5e78;
+            background-color: red;
             color: white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        button:hover {
-            background-color: #ff2e50;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-
-    <!-- Contenido de la presentación -->
-    <div class="slide active">💘 ¿Quieres ser mi San Valentín? 💘  
-        <p>Desde que te conocí quede fascinado y desde que estaamos con profe Alexita supe que eras el amor de mi vida y te hibasa convertir en alguien muy especial. 💖  
-        Tu sonrisa ilumina mis días y tu presencia llena mi corazón de alegría.  
-        No hay nadie con quien prefiera compartir este día tan bonito. 🌹✨</p>
+    <div class="container">
+        <div class="slide active">❤️ ¿Quieres ser mi San Valentín? ❤️</div>
+        <button onclick="siguienteSlide()">Siguiente</button>
+         <div class="slide">Desde que aquel dia que te vi en el aula con profe Alexita, me quede flechado y cuando cruzamos miradas supe que eras el Amor de mi vida y te hibas a convertir en alguien muy especial para mi. 💖</div>
+          <button onclick="siguienteSlide()">Siguiente</button>
+         <div class="slide">Entonces llegaste a mi vida y desde aquel instante, tu sonrisa ilumina mis días y tu cariño llena mi corazón de felicidad y amor. 😊</div>
+         <button onclick="siguienteSlide()">Siguiente</button>
+          <div class="slide">Cada momento que comparto contigo es mágico y único, me pone muy contento tenerte en mi vida. ✨</div>
+          <button onclick="siguienteSlide()">Siguiente</button>
+         <div class="slide">Eres el amor de mi vida, mi felicidad eterna, la niña que mas me importa en el universo. 💕</div>
+         <button onclick="siguienteSlide()">Siguiente</button>
+          <div class="slide">No hay nadie con quien prefiera compartir mi amor, que solo contigo mi princesa linda y espero que nuestra relación, nunca acabe, y sea desde aquel instante hasta la eternidad. 🌹</div>
     </div>
-    <div class="slide">🌹 Mi amorsote te prometo momentos hermosos llenos de amor. 🌹</div>
-    <div class="slide">💖 Eres la persona más importante y especial en mi vida. 💖</div>
-    <div class="slide">💕 Mi chiquitita bella esperare tu respuesta con emoción y cariño. 💕</div>
-
-    <button onclick="nextSlide()">Siguiente</button>
-
+    
     <script>
-        let index = 0;
-        function nextSlide() {
-            let slides = document.querySelectorAll(".slide");
-            slides[index].classList.remove("active");
-            index = (index + 1) % slides.length;
-            slides[index].classList.add("active");
-        
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function siguienteSlide() {
+            slides[slideIndex].classList.remove("active");
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add("active");
+        }
+    </script>
+</body>
+</html>
