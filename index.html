@@ -71,10 +71,10 @@
             position: absolute;
             top: -10vh;
             width: 15px;
-            height: 15px;
+            height: 20px;
             background-color: pink;
-            border-radius: 50%;
-            box-shadow: -5px -5px 0px rgba(255, 182, 193, 0.8);
+            border-radius: 50% 50% 0 0; /* Forma ovalada como pétalo */
+            transform: rotate(30deg);
             animation: caerPetalos 6s linear infinite;
             opacity: 0.8;
         }
@@ -83,8 +83,8 @@
 <body>
     <div class="container">
         <div class="slide active">❤️ ¿Quieres ser mi San Valentín? ❤️</div>
-        <div class="slide">Desde el primer dia en que te vi, quedé fascinado, era tan pequeño pero supe que eras el amor de mi vida, la niña mas linda en el universo, cada día a tu lado ha sido una confirmación y me he dado cuenta que lo nuestro es un amor único y maravilloso. 💖💖</div>
-        <div class="slide">"Desde que entraste en mi vida, trajiste contigo una luz que ilumina hasta mis días más grises y te convertiste en la flor más hermosa de mi jardín. 🌷💖</div>
+        <div class="slide">Desde el primer día en que te vi, quedé fascinado. Desde entonces, cada momento a tu lado ha sido un regalo. 💖💖</div>
+        <div class="slide">"Desde que entraste en mi vida, trajiste contigo una luz que ilumina hasta mis días más grises. Eres la flor más hermosa de mi jardín. 🌷💖</div>
         <div class="slide">No hay nadie con quien desee compartir este día tan especial más que contigo, mi princesa hermosa. A tu lado, cada instante se vuelve mágico. 🌹✨</div>
         <button onclick="siguienteSlide()">Siguiente</button>
     </div>
@@ -125,6 +125,7 @@
                 petalo.classList.add("petalo");
                 petalo.style.left = Math.random() * 100 + "vw";
                 petalo.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                petalo.style.transform = `rotate(${Math.random() * 360}deg)`;
                 document.body.appendChild(petalo);
 
                 setTimeout(() => petalo.remove(), 6000);
