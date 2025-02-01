@@ -11,24 +11,26 @@
             box-sizing: border-box;
         }
         body {
-            background-image: url('https://example.com/flores.jpg'); /* Reemplaza con una URL de imagen */
-    background-size: cover;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: pink;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
             text-align: center;
+            overflow: hidden; /* Evita scroll por los efectos */
+            position: relative;
         }
         .container {
-            background: #666;
+            background: rgba(102, 102, 102, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 80%;
             max-width: 500px;
             color: white;
+            position: relative;
+            z-index: 2;
         }
         .slide {
             display: none;
@@ -47,45 +49,43 @@
             border-radius: 5px;
             cursor: pointer;
         }
-    </style>
-    <style>
-  @keyframes caer {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-  }
-  
-  .petalo {
-      position: absolute;
-      top: -10vh;
-      width: 30px;
-      height: 30px;
-      background: url('https://i.imgur.com/KzZzO2L.png'); /* Imagen de pétalo */
-      background-size: contain;
-      animation: caer 5s linear infinite;
-  }
-</style>
 
-<script>
-  function crearPetalos() {
-      for (let i = 0; i < 15; i++) {
-          let petalo = document.createElement("div");
-          petalo.classList.add("petalo");
-          petalo.style.left = Math.random() * 100 + "vw";
-          petalo.style.animationDuration = (Math.random() * 3 + 3) + "s";
-          document.body.appendChild(petalo);
-          
-          setTimeout(() => petalo.remove(), 5000);
-      }
-  }
-  
-  setInterval(crearPetalos, 500);
-</script>
+        /* 🌸 Pétalos cayendo */
+        @keyframes caer {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .petalo {
+            position: absolute;
+            top: -10vh;
+            width: 30px;
+            height: 30px;
+            background: url('https://i.imgur.com/KzZzO2L.png'); /* Imagen de pétalo */
+            background-size: contain;
+            animation: caer 5s linear infinite;
+            z-index: 1;
+        }
+
+        /* ❤️ Corazones flotando */
+        @keyframes flotar {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-50px) scale(1.2); opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+        .corazon {
+            position: absolute;
+            bottom: -10vh;
+            font-size: 25px;
+            animation: flotar 6s linear infinite;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="slide active">❤️ ¿Quieres ser mi San Valentín? ❤️</div>
+        <div class="slide active">🌸 ❤️ ¿Quieres ser mi San Valentín? ❤️ 🌸</div>
         <div class="slide">Desde que te conocí, quedé fascinado y desde que estábamos con la profe Alexita, supe que eras el amor de mi vida y te ibas a convertir en alguien muy especial. 💖</div>
-       <div class="slide">Desde que te conocí, quedé fascinado. 🌷💖</div>
+        <div class="slide">Tu sonrisa ilumina mis días y tu presencia llena mi corazón de alegría. 🌷💖</div>
         <div class="slide">No hay nadie con quien prefiera compartir este día tan bonito. 🌹✨</div>
         <button onclick="siguienteSlide()">Siguiente</button>
     </div>
@@ -103,6 +103,36 @@
 
             document.querySelector("button").addEventListener("click", siguienteSlide);
         });
+
+        /* 🌸 Crear pétalos en la pantalla */
+        function crearPetalos() {
+            for (let i = 0; i < 15; i++) {
+                let petalo = document.createElement("div");
+                petalo.classList.add("petalo");
+                petalo.style.left = Math.random() * 100 + "vw";
+                petalo.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                document.body.appendChild(petalo);
+                
+                setTimeout(() => petalo.remove(), 5000);
+            }
+        }
+
+        /* ❤️ Crear corazones flotando */
+        function crearCorazones() {
+            for (let i = 0; i < 10; i++) {
+                let corazon = document.createElement("div");
+                corazon.classList.add("corazon");
+                corazon.innerHTML = "❤️";
+                corazon.style.left = Math.random() * 100 + "vw";
+                corazon.style.animationDuration = (Math.random() * 4 + 3) + "s";
+                document.body.appendChild(corazon);
+
+                setTimeout(() => corazon.remove(), 6000);
+            }
+        }
+
+        setInterval(crearPetalos, 500);
+        setInterval(crearCorazones, 800);
     </script>
 </body>
 </html>
