@@ -11,6 +11,8 @@
             box-sizing: border-box;
         }
         body {
+            background-image: url('https://example.com/flores.jpg'); /* Reemplaza con una URL de imagen */
+    background-size: cover;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -46,6 +48,38 @@
             cursor: pointer;
         }
     </style>
+    <style>
+  @keyframes caer {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+  }
+  
+  .petalo {
+      position: absolute;
+      top: -10vh;
+      width: 30px;
+      height: 30px;
+      background: url('https://i.imgur.com/KzZzO2L.png'); /* Imagen de pétalo */
+      background-size: contain;
+      animation: caer 5s linear infinite;
+  }
+</style>
+
+<script>
+  function crearPetalos() {
+      for (let i = 0; i < 15; i++) {
+          let petalo = document.createElement("div");
+          petalo.classList.add("petalo");
+          petalo.style.left = Math.random() * 100 + "vw";
+          petalo.style.animationDuration = (Math.random() * 3 + 3) + "s";
+          document.body.appendChild(petalo);
+          
+          setTimeout(() => petalo.remove(), 5000);
+      }
+  }
+  
+  setInterval(crearPetalos, 500);
+</script>
 </head>
 <body>
     <div class="container">
