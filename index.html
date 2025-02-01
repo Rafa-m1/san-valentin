@@ -16,13 +16,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            background: linear-gradient(to bottom, #ffb6c1, #ffccd5);
             text-align: center;
-            overflow: hidden; /* Evita el scroll innecesario */
-            position: relative;
+            overflow: hidden;
         }
         .container {
-            background: rgba(102, 102, 102, 0.8);
+            background: #666;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -30,7 +29,7 @@
             max-width: 500px;
             color: white;
             position: relative;
-            z-index: 2;
+            z-index: 10;
         }
         .slide {
             display: none;
@@ -50,48 +49,46 @@
             cursor: pointer;
         }
 
-        /* 🌸 Animación de pétalos */
+        /* ❤️ Animación de corazones */
         @keyframes caer {
+            0% { transform: translateY(-10vh) scale(0.8); opacity: 1; }
+            100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+        }
+        .corazon {
+            position: absolute;
+            top: -10vh;
+            font-size: 24px;
+            animation: caer 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        /* 🌸 Animación de pétalos */
+        @keyframes caerPetalos {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
         .petalo {
             position: absolute;
             top: -10vh;
-            width: 30px;
-            height: 30px;
-            background: url('https://i.imgur.com/5PHzIEP.png'); /* Imagen de pétalo */
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: caer 5s linear infinite;
-            z-index: 1;
-        }
-
-        /* ❤️ Animación de corazones */
-        @keyframes flotar {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            50% { transform: translateY(-50px) scale(1.2); opacity: 0.8; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-        }
-        .corazon {
-            position: absolute;
-            bottom: -10vh;
-            font-size: 25px;
-            color: red;
-            animation: flotar 6s linear infinite;
-            z-index: 1;
+            width: 15px;
+            height: 15px;
+            background-color: pink;
+            border-radius: 50%;
+            box-shadow: -5px -5px 0px rgba(255, 182, 193, 0.8);
+            animation: caerPetalos 6s linear infinite;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="slide active">🌸 ❤️ ¿Quieres ser mi San Valentín? ❤️ 🌸</div>
-        <div class="slide">Desde que te conocí, quedé fascinado y desde que estábamos con la profe Alexita, supe que eras el amor de mi vida y te ibas a convertir en alguien muy especial. 💖</div>
-        <div class="slide">Tu sonrisa ilumina mis días y tu presencia llena mi corazón de alegría. 🌷💖</div>
-        <div class="slide">No hay nadie con quien prefiera compartir este día tan bonito. 🌹✨</div>
+        <div class="slide active">❤️ ¿Quieres ser mi San Valentín? ❤️</div>
+        <div class="slide">Desde el primer dia en que te vi, quedé fascinado, era tan pequeño pero supe que eras el amor de mi vida, la niña mas linda en el universo, cada día a tu lado ha sido una confirmación y me he dado cuenta que lo nuestro es un amor único y maravilloso. 💖💖</div>
+        <div class="slide">"Desde que entraste en mi vida, trajiste contigo una luz que ilumina hasta mis días más grises y te convertiste en la flor más hermosa de mi jardín. 🌷💖</div>
+        <div class="slide">No hay nadie con quien desee compartir este día tan especial más que contigo, mi princesa hermosa. A tu lado, cada instante se vuelve mágico. 🌹✨</div>
         <button onclick="siguienteSlide()">Siguiente</button>
     </div>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             let slideIndex = 0;
@@ -106,35 +103,34 @@
             document.querySelector("button").addEventListener("click", siguienteSlide);
         });
 
-        /* 🌸 Crear pétalos en la pantalla */
+        /* ❤️ Generar corazones flotantes */
+        function crearCorazones() {
+            for (let i = 0; i < 5; i++) {
+                let corazon = document.createElement("div");
+                corazon.classList.add("corazon");
+                corazon.innerHTML = "❤️";
+                corazon.style.left = Math.random() * 100 + "vw";
+                corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(corazon);
+
+                setTimeout(() => corazon.remove(), 5000);
+            }
+        }
+        setInterval(crearCorazones, 1000);
+
+        /* 🌸 Generar pétalos flotantes */
         function crearPetalos() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 let petalo = document.createElement("div");
                 petalo.classList.add("petalo");
                 petalo.style.left = Math.random() * 100 + "vw";
                 petalo.style.animationDuration = (Math.random() * 3 + 3) + "s";
                 document.body.appendChild(petalo);
-                
-                setTimeout(() => petalo.remove(), 5000);
+
+                setTimeout(() => petalo.remove(), 6000);
             }
         }
-
-        /* ❤️ Crear corazones flotando */
-        function crearCorazones() {
-            for (let i = 0; i < 10; i++) {
-                let corazon = document.createElement("div");
-                corazon.classList.add("corazon");
-                corazon.innerHTML = "❤️";
-                corazon.style.left = Math.random() * 100 + "vw";
-                corazon.style.animationDuration = (Math.random() * 4 + 3) + "s";
-                document.body.appendChild(corazon);
-
-                setTimeout(() => corazon.remove(), 6000);
-            }
-        }
-
-        setInterval(crearPetalos, 1000);
-        setInterval(crearCorazones, 1200);
+        setInterval(crearPetalos, 1200);
     </script>
 </body>
 </html>
