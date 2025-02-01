@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/dist/theme/black.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-background="https://source.unsplash.com/1600x900/?love,romance">
+                <h1 style="color: pink; font-size: 60px;">¿Quieres ser mi San Valentín? 💖</h1>
+                <p style="color: white; font-size: 30px;">(Haz clic para continuar)</p>
+            </section>
+
+            <section>
+                <h2>Porque me encantas... 💕</h2>
+                <ul>
+                    <li>Eres increíblemente especial. ✨</li>
+                    <li>Tu sonrisa ilumina mis días. 😊</li>
+                    <li>Siempre haces que todo sea mejor. 💫</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>¿Por qué tú? 🥰</h2>
+                <p>Porque cada momento contigo es mágico.</p>
+                <img src="https://source.unsplash.com/500x300/?heart,couple" alt="Corazón bonito">
+            </section>
+
+            <section>
+                <h2>¿Qué dices? 💘</h2>
+                <button onclick="alert('¡Sabía que dirías que sí! 😍💖')">Sí, me encantaría 💕</button>
+                <button onclick="alert('No pasa nada, igual seguirás siendo increíble! 😊')">Lo pensaré 🤔</button>
+            </section>
+        </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
